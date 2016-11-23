@@ -1,0 +1,33 @@
+{%extends 'pagina/este.html'%}
+{%block content%}
+
+<div class="container">
+  <h2>Listado de empresas</h2>
+  <p>Lista detallada de empresas</p>
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for empresa in empresas%}
+      <tr>
+      <td>{{empresa.nombre}}</td>
+      <td>{{empresa.direccion}}</td>
+      <td>{{empresa.telefono}}</td>
+      <td>{{empresa.correo}}</td>
+      <td><a href="/administrador/empresa/borrar/{{empresa.pk}}">Eliminar</a> <a href="/administrador/empresa/modificar/{{empresa.pk}}">Modificar</a> </td>
+    </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+   </div>
+</div>
+
+{%endblock%}

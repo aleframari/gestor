@@ -1,0 +1,32 @@
+{%extends 'pagina/raizU.html'%}
+{%block content%}
+
+<div class="container">
+  <h2>Listado de proyectos</h2>
+  <p>Lista detallada de proyectos</p>
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Actividades</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for proyecto in proyectos%}
+      <tr>
+      <td>{{proyecto.nombre}}</td>
+      <td>
+        {%for actividad in proyecto.actividades.all%}
+        {{actividad}}
+        <br>
+          {%endfor%}
+      </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+   </div>
+</div>
+
+{%endblock%}

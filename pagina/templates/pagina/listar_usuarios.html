@@ -1,0 +1,31 @@
+{%extends 'pagina/este.html'%}
+{%block content%}
+
+<div class="container">
+  <h2>Listado de usuarios</h2>
+  <p>Lista de todos los usuarios.</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Grupo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for usuario in usuarios%}
+      <tr>
+      <td>{{usuario.username}}</td>
+      <td>
+      {%for grupo in usuario.groups.all%}
+      {{grupo}}
+      {%endfor%}
+    </td>
+    <td><a href="/administrador/usuario/borrar/{{usuario.pk}}">Eliminar</a> <a href="/administrador/usuario/modificar/{{usuario.pk}}">Modificar</a> </td>
+    <tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+
+{%endblock%}

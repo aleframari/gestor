@@ -1,0 +1,34 @@
+{%extends 'pagina/este.html'%}
+{%block content%}
+
+<div class="container">
+  <h2>Listado de proyectos</h2>
+  <p>Lista detallada de proyectos</p>
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Actividades</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for proyecto in proyectos%}
+      <tr>
+      <td>{{proyecto.nombre}}</td>
+      <td>
+        {%for actividad in proyecto.actividades.all%}
+        {{actividad}}
+        <br>
+          {%endfor%}
+      </td>
+      <td><a href="/administrador/proyecto/borrar/{{proyecto.pk}}">Eliminar</a> <a href="/administrador/proyecto/modificar/{{proyecto.pk}}">Modificar</a> </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+   </div>
+</div>
+
+{%endblock%}

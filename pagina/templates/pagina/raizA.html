@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+      <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"></script>
+      <title>Gestor de proyectos</title>
+    </head>
+    <body>
+      <nav class="navbar navbar-inverse">
+       <div class="container-fluid">
+         <div class="navbar-header">
+           <a class="navbar-brand" href="#">Gestor de proyectos</a>
+         </div>
+         <ul class="nav navbar-nav">
+           <li><a href="/">Inicio</a></li>
+           <li class="dropdown">
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Actividades
+             <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li><a href="/administrador/actividades/ingreso">Ingreso actividades</a></li>
+               <li><a href="/administrador/actividades/listar">Listar actividades</a></li>
+             </ul>
+           </li>
+           <li class="dropdown">
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios
+             <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li><a href="/administrador/usuarios/ingreso">Ingreso usuarios</a></li>
+               <li><a href="/administrador/usuarios/listar">Listar usuarios</a></li>
+             </ul>
+           </li>
+           <li><a href="#">Page 2</a></li>
+           <li><a href="/abandonar">Cerrar</a></li>
+         </ul>
+       </div>
+     </nav>
+{%block content%}
+{%endblock%}
+    </body>
+</html>

@@ -1,0 +1,48 @@
+{%extends 'pagina/este.html'%}
+{%block content%}
+          <h2>Ingreso de Proyecto</h2>
+                <br>
+                    <p>Agregue los nuevos proyectos.</p>
+                <br>
+            <br>
+            <div id="cmr">
+            <center><label id="mr"></label></center>
+        </div><br>
+
+<form class="form-horizontal" method="post">{% csrf_token %}
+
+<!-- Form Name -->
+<legend>Ingreso proyecto</legend>
+
+{{ formulario.non_field_errors }}
+
+       <div class="form-group">
+ {{ formulario.nombre.errors }}
+       <label for="{{ formulario.nombre.id_for_label }}" class="control-label col-sm-2">Nombre</label>
+       <div class="col-sm-5">
+ {{ formulario.nombre }}
+       </div>
+       </div>
+
+ <div class="form-group">
+ {{ formulario.actividades.errors }}
+       <label for="{{ formulario.actividades.id_for_label }}" class="control-label col-sm-2">Actividades</label>
+
+       <div class="col-sm-5">
+ {{ formulario.actividades }}
+       </div>
+       </div>
+
+ <!-- Button -->
+
+
+<div class="form-group">
+      <div class="col-sm-offset-2 col-sm-5">
+        <input type="submit" class="btn btn-1 btn-warning" id="IngresarHoga" value="Ingresar Hogar">
+      </div>
+    </div>
+
+</form>
+
+
+{%endblock%}

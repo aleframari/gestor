@@ -1,0 +1,71 @@
+{%extends 'pagina/este.html'%}
+{%block content%}
+          <h2>Ingreso de asignaciones</h2>
+                <br>
+                    <p>Agregue las nuevas asignaciones.</p>
+                <br>
+            <br>
+            <div id="cmr">
+            <center><label id="mr"></label></center>
+        </div><br>
+
+<form class="form-horizontal" method="post">{% csrf_token %}
+
+<!-- Form Name -->
+<legend>Ingreso actividades</legend>
+
+{{ formulario.non_field_errors }}
+
+       <div class="form-group">
+ {{ formulario.nombre_asignacion.errors }}
+       <label for="{{ formulario.nombre_asignacion.id_for_label }}" class="control-label col-sm-2">Nombre</label>
+       <div class="col-sm-5">
+ {{ formulario.nombre_asignacion }}
+       </div>
+       </div>
+
+ <div class="form-group">
+ {{ formulario.empresa.errors }}
+       <label for="{{ formulario.empresa.id_for_label }}" class="control-label col-sm-2">Empresa</label>
+       <div class="col-sm-5">
+ {{ formulario.empresa }}
+       </div>
+       </div>
+
+ <div class="form-group">
+ {{ formulario.proyectos.errors }}
+       <label for="{{ formulario.proyectos.id_for_label }}" class="control-label col-sm-2">Proyectos</label>
+       <div class="col-sm-5">
+ {{ formulario.proyectos }}
+       </div>
+       </div>
+
+ <div class="form-group">
+ {{ formulario.fondos.errors }}
+       <label for="{{ formulario.fondos.id_for_label }}" class="control-label col-sm-2">Fondos</label>
+       <div class="col-sm-5">
+ {{ formulario.fondos }}
+       </div>
+       </div>
+
+       <div class="form-group">
+       {{ formulario.recursos_humano.errors }}
+             <label for="{{ formulario.recursos_humano.id_for_label }}" class="control-label col-sm-2">Recurso Humano</label>
+             <div class="col-sm-5">
+       {{ formulario.recursos_humano }}
+             </div>
+             </div>
+
+<!-- Button -->
+
+
+<div class="form-group">
+      <div class="col-sm-offset-2 col-sm-5">
+        <input type="submit" class="btn btn-1 btn-warning" id="IngresarHoga" value="Actualizar Asignacion">
+      </div>
+    </div>
+
+</form>
+
+
+{%endblock%}

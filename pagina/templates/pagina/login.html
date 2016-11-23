@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<center><title>{% block title %}Sistema de gestión de tareas{% endblock %}</title></center>
+		{% load staticfiles %}
+		<link rel="shortcut icon" type="image/png" href="{% static "todo_list/favicon.ico" %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static "todo_list/css/main.css" %}">
+		<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<center><h1>Sistema de gestión de proyectos</h1></center>
+		<div class="container">
+		    <div class="row vertical-offset-100">
+		    	<div class="col-md-4 col-md-offset-4">
+		    		<div class="panel panel-default">
+					  	<div class="panel-heading">
+					    	<h3 class="panel-title">Login</h3>
+					 	</div>
+					  	<div class="panel-body">
+					    	<form accept-charset="UTF-8" role="form"  method='POST'> {% csrf_token %}
+		                    <fieldset>
+                  {{ formulario.non_field_errors }}
+					    	  <div class="form-group">
+                      {{ formulario.username.errors }}
+                      <label for="{{ formulario.username.id_for_label }}">Nombre de usuario:</label>
+                      {{ formulario.username }}
+
+                  </div>
+					    		<div class="form-group">
+                    {{ formulario.password.errors }}
+                    <label for="{{ formulario.password.id_for_label }}">Contraseña:</label>
+                    {{ formulario.password }}
+                  </div>
+					    		<div class="checkbox">
+
+					    	    </div>
+					    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Entrar">
+					    	</fieldset>
+                <div class="card-action">
+                  <p ><center class="red-text">{{ mensaje }}</center></p>
+                </div>
+					      	</form>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

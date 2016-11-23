@@ -1,0 +1,35 @@
+{%extends 'pagina/este.html'%}
+{%block content%}
+
+<div class="container">
+  <h2>Listado de actividades</h2>
+  <p>Lista detallada de actividades</p>
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Actividad</th>
+        <th>Prioridad</th>
+        <th>Dificultad</th>
+        <th>Fecha creacion</th>
+        <th>Fecha finalizacion</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for actividad in actividades%}
+      <tr>
+      <td>{{actividad.nombre}}</td>
+      <td>{{actividad.prioridad}}</td>
+      <td>{{actividad.dificultad}}</td>
+      <td>{{actividad.fecha_creacion}}</td>
+      <td>{{actividad.fecha_fin}}</td>
+      <td><a href="/administrador/actividades/borrar/{{actividad.pk}}">Eliminar</a> <a href="/administrador/actividades/modificar/{{actividad.pk}}">Modificar</a> </td>
+    </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+   </div>
+</div>
+
+{%endblock%}

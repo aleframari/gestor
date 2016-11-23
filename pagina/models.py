@@ -22,7 +22,7 @@ class Actividad(models.Model):
 class Proyecto(models.Model):
     nombre = models.CharField(max_length = 60)
     actividades = models.ManyToManyField(Actividad)
-    def __str__(sefl):
+    def __str__(self):
         return self.nombre
 
 class Empresa(models.Model):
