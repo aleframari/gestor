@@ -1,3 +1,4 @@
+# coding=utf-8
 from django import forms
 from .models import Actividad, Asignacion, Proyecto, Empresa
 from django.contrib.auth.models import User
@@ -38,3 +39,15 @@ class UsuarioForm(forms.ModelForm):
             'password':forms.PasswordInput,
             'groups': forms.SelectMultiple,
 }
+class ProForm(forms.ModelForm):
+    class Meta:
+        model = Proyecto
+        fields = ('nombre','actividades')
+
+
+def __init__ (self, *args, **kwargs):
+        super(ProForm, self).__init__(*args, **kwargs)
+
+        self.fields["actividades"].widget = forms.widgets.CheckboxSelectMultiple()
+        self.fields["actividades"].help_text = "Ingrese los Actores que participaron en la película"
+        self.fields["actividades"].queryset = Actividad.objects.all()

@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User,Group
 from .models import Actividad, Asignacion, Proyecto, Empresa
-from .forms import ActividadForm, ProyectoForm, EmpresaForm, AsignacionForm, UsuarioForm
+from .forms import ActividadForm, ProyectoForm, EmpresaForm, AsignacionForm, UsuarioForm, ProForm
 # Create your views here.
 def usuario_listar(request):
     if len(request.user.groups.all())>0 and request.user.groups.all()[0].name == "Usuario":
@@ -111,7 +111,7 @@ def agregar_asignacion(request):
         if request.method=="POST":
             formulario = AsignacionForm(request.POST)
             if formulario.is_valid():
-                asignacion = formulario.save(commit=False)
+                asignacion = formulario.save()
                 asignacion.save()
                 return redirect('/administrador')
         else:
@@ -197,7 +197,7 @@ def agregar_proyecto(request):
         if request.method=="POST":
             formulario = ProyectoForm(request.POST)
             if formulario.is_valid():
-                proyecto = formulario.save(commit=False)
+                proyecto = formulario.save()
                 proyecto.save()
                 return redirect('/administrador')
         else:
@@ -205,6 +205,19 @@ def agregar_proyecto(request):
         return render(request, 'pagina/agregar_proyecto.html', {'formulario':formulario})
     else:
         return redirect('/')
+
+def pelicula_nueva(request):
+    if request.method == "POST":
+        formulario = ProForm(request.POST)
+        if formulario.is_valid():
+            proyecto = Proyecto.objects.create(nombre=formulario.cleaned_data['nombre'])
+            for actividad_id in request.POST.getlist('actividad'):
+               actuacion = Actividad(actividad_id=actividad_id)
+               actuacion.save()
+               return redirect('/administrador')
+    else:
+        formulario = ProForm()
+    return render(request, 'pagina/agregar_proyecto.html', {'formulario':formulario})
 
 def logo(request):
     if len(request.user.groups.all())>0 and request.user.groups.all()[0].name == "Administrador":
